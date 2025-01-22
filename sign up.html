@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penpalmega Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .signup-form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .signup-form h2 {
+            margin-bottom: 20px;
+        }
+        .signup-form .form-group {
+            margin-bottom: 15px;
+        }
+        .signup-form .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .signup-form .form-group input,
+        .signup-form .form-group select,
+        .signup-form .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .signup-form .form-group textarea {
+            resize: vertical;
+        }
+        .signup-form .form-group .error {
+            color: red;
+            font-size: 0.9em;
+        }
+        .signup-form .form-group .captcha {
+            margin-top: 10px;
+        }
+        .signup-form .form-group .terms {
+            display: flex;
+            align-items: center;
+        }
+        .signup-form .form-group .terms input {
+            margin-right: 10px;
+        }
+        .signup-form button {
+            padding: 10px 20px;
+            background: #007bff;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .signup-form button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+<form class="signup-form" id="signupForm">
+    <h2>Sign Up</h2>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+        <div class="error" id="nameError"></div>
+    </div>
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+        <div class="error" id="usernameError"></div>
+    </div>
+    <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" required min="1">
+        <div class="error" id="ageError"></div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <div class="error" id="emailError"></div>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        <div class="error" id="passwordError"></div>
+    </div>
+    <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+        <div class="error" id="confirmPasswordError"></div>
+    </div>
+    <div class="form-group">
+        <label for="country">Country</label>
+        <select id="country" name="country" required>
+            <option value="">Select your country</option>
+            <!-- Add more country options here -->
+        </select>
+        <div class="error" id="countryError"></div>
+    </div>
+    <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" required>
+        <div class="error" id="cityError"></div>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+        <div class="error" id="descriptionError"></div>
+    </div>
+    <div class="form-group captcha">
+        <!-- Add your CAPTCHA or reCAPTCHA widget here -->
+    </div>
+    <div class="form-group terms">
+        <input type="checkbox" id="terms" name="terms" required>
+        <label for="terms">I agree to the Terms and Conditions</label>
+        <div class="error" id="termsError"></div>
+    </div>
+    <button type="submit" id="submitButton">Sign Up</button>
+</form>
+
+<script>
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        validateForm();
+    });
+
+    function validateForm() {
+        let valid = true;
+
+        // Clear previous errors
+        document.querySelectorAll('.error').forEach(function(error) {
+            error.textContent = '';
+        });
+
+        // Validate Name
+        const name = document.getElementById('name').value;
+        if (name === '') {
+            valid = false;
+            document.getElementById('nameError').textContent = 'Name is required';
+        }
+
+        // Validate Username
+        const username = document.getElementById('username').value;
+        if (username === '') {
+            valid = false;
+            document.getElementById('usernameError').textContent = 'Username is required';
+        }
+
+        // Validate Age
+        const age = document.getElementById('age').value;
+        if (age === '' || age < 1) {
+            valid = false;
+            document.getElementById('ageError').textContent = 'Valid age is required';
+        }
+
+        // Validate Email
+        const email = document.getElementById('email').value;
+        if (email === '') {
+            valid = false;
+            document.getElementById('emailError').textContent = 'Email is required';
+        }
+
+        // Validate Password
+        const password = document.getElementById('password').value;
+        if (password === '') {
+            valid = false;
+            document.getElementById('passwordError').textContent = 'Password is required';
+        }
+
+        // Validate Confirm Password
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        if (confirmPassword !== password) {
+            valid = false;
+            document.getElementById('confirmPasswordError').textContent = 'Passwords do not match';
+        }
+
+        // Validate Country
+        const country = document.getElementById('country').value;
+        if (country === '') {
+            valid = false;
+            document.getElementById('countryError').textContent = 'Country is required';
+        }
+
+        // Validate City
+        const city = document.getElementById('city').value;
+        if (city === '') {
+            valid = false;
+            document.getElementById('cityError').textContent = 'City is required';
+        }
+
+        // Validate Description
+        const description = document.getElementById('description').value;
+        if (description === '') {
+            valid = false;
+            document.getElementById('descriptionError').textContent = 'Description is required';
+        }
+
+        // Validate Terms and Conditions
+        const terms = document.getElementById('terms').checked;
+        if (!terms) {
+            valid = false;
+            document.getElementById('termsError').textContent = 'You must agree to the Terms and Conditions';
+        }
+
+        if (valid) {
+            alert('Form submitted successfully');
+            // Here you can add the code to actually submit the form data to the server
+        }
+    }
+</script>
+
+</body>
+</html>
