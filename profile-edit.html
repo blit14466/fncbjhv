@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penpalmega Profile Edit</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .profile-edit-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .profile-edit-container h2 {
+            margin-bottom: 20px;
+        }
+        .profile-edit-section {
+            margin-bottom: 30px;
+        }
+        .profile-edit-section label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .profile-edit-section input[type="text"],
+        .profile-edit-section input[type="email"],
+        .profile-edit-section input[type="number"],
+        .profile-edit-section select,
+        .profile-edit-section textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .profile-edit-section input[type="file"] {
+            margin-bottom: 10px;
+        }
+        .profile-edit-section .radio-group {
+            display: flex;
+            justify-content: space-between;
+        }
+        .profile-edit-section .radio-group label {
+            flex: 1;
+            margin: 5px;
+        }
+        .profile-edit-section button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .profile-edit-section button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="profile-edit-container">
+    <h2>Edit Profile</h2>
+
+    <div class="profile-edit-section">
+        <label for="profilePicture">Profile Picture</label>
+        <input type="file" id="profilePicture" name="profilePicture">
+    </div>
+
+    <div class="profile-edit-section">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+    </div>
+
+    <div class="profile-edit-section">
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" required min="1">
+    </div>
+
+    <div class="profile-edit-section">
+        <label for="country">Country</label>
+        <select id="country" name="country" required>
+            <option value="">Select your country</option>
+            <!-- Add more country options here -->
+        </select>
+    </div>
+
+    <div class="profile-edit-section">
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" required>
+    </div>
+
+    <div class="profile-edit-section">
+        <label for="hobbies">Hobbies</label>
+        <select id="hobbies" name="hobbies" multiple required>
+            <option value="reading">Reading</option>
+            <option value="traveling">Traveling</option>
+            <option value="cooking">Cooking</option>
+            <!-- Add more hobby options here -->
+        </select>
+    </div>
+
+    <div class="profile-edit-section">
+        <label for="preferredLanguage">Preferred Language</label>
+        <select id="preferredLanguage" name="preferredLanguage" required>
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <!-- Add more language options here -->
+        </select>
+    </div>
+
+    <div class="profile-edit-section">
+        <label>Gender</label>
+        <div class="radio-group">
+            <label><input type="radio" name="gender" value="male" required> Male</label>
+            <label><input type="radio" name="gender" value="female"> Female</label>
+            <label><input type="radio" name="gender" value="other"> Other</label>
+        </div>
+    </div>
+
+    <div class="profile-edit-section">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="profile-edit-section">
+        <button type="submit">Update Profile</button>
+    </div>
+</div>
+
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Add form validation and submission logic here
+        alert('Profile updated successfully');
+    });
+</script>
+
+</body>
+  </html>
