@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penpalmega User Settings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .settings-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .settings-container h2 {
+            margin-bottom: 20px;
+        }
+        .settings-section {
+            margin-bottom: 30px;
+        }
+        .settings-section h3 {
+            margin-bottom: 10px;
+        }
+        .settings-section label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .settings-section select,
+        .settings-section input[type="password"],
+        .settings-section button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .settings-section .radio-group {
+            display: flex;
+            justify-content: space-between;
+        }
+        .settings-section .radio-group label {
+            flex: 1;
+            margin: 5px;
+        }
+        .settings-section button {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .settings-section button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="settings-container">
+    <h2>User Settings</h2>
+
+    <div class="settings-section">
+        <h3>Privacy Options</h3>
+        <label for="messagePrivacy">Who can message me:</label>
+        <select id="messagePrivacy" name="messagePrivacy">
+            <option value="everyone">Everyone</option>
+            <option value="friends">Friends</option>
+        </select>
+
+        <label for="friendListPrivacy">Who can see my friend list:</label>
+        <select id="friendListPrivacy" name="friendListPrivacy">
+            <option value="everyone">Everyone</option>
+            <option value="friends">Friends</option>
+            <option value="onlyMe">Only Me</option>
+        </select>
+
+        <label for="emailPrivacy">Who can see my email:</label>
+        <select id="emailPrivacy" name="emailPrivacy">
+            <option value="everyone">Everyone</option>
+            <option value="friends">Friends</option>
+            <option value="onlyMe">Only Me</option>
+        </select>
+
+        <label for="onlineStatusPrivacy">Who can see me online:</label>
+        <select id="onlineStatusPrivacy" name="onlineStatusPrivacy">
+            <option value="everyone">Everyone</option>
+            <option value="friends">Friends</option>
+            <option value="onlyMe">Only Me</option>
+        </select>
+    </div>
+
+    <div class="settings-section">
+        <h3>Account Options</h3>
+        <button id="deactivateAccount">Deactivate Account</button>
+        <button id="deleteAccount">Delete Account</button>
+    </div>
+
+    <div class="settings-section">
+        <h3>Password Management</h3>
+        <label for="oldPassword">Old Password:</label>
+        <input type="password" id="oldPassword" name="oldPassword" required>
+
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required>
+
+        <label for="confirmNewPassword">Confirm New Password:</label>
+        <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>
+
+        <button id="changePassword">Change Password</button>
+    </div>
+
+    <div class="settings-section">
+        <h3>Appearance</h3>
+        <label for="theme">Theme:</label>
+        <select id="theme" name="theme">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+        </select>
+    </div>
+
+    <div class="settings-section">
+        <h3>Language Settings</h3>
+        <label for="language">Preferred Language:</label>
+        <select id="language" name="language">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <!-- Add more language options as needed -->
+        </select>
+    </div>
+</div>
+
+<script>
+    document.getElementById('deactivateAccount').addEventListener('click', function() {
+        if (confirm('Are you sure you want to deactivate your account?')) {
+            // Handle account deactivation
+            alert('Account deactivated');
+        }
+    });
+
+    document.getElementById('deleteAccount').addEventListener('click', function() {
+        if (confirm('Are you sure you want to delete your account? This action is permanent.')) {
+            // Handle account deletion
+            alert('Account deleted');
+        }
+    });
+
+    document.getElementById('changePassword').addEventListener('click', function(event) {
+        event.preventDefault();
+        // Handle password change
+        const oldPassword = document.getElementById('oldPassword').value;
+        const newPassword = document.getElementById('newPassword').value;
+        const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+
+        if (newPassword !== confirmNewPassword) {
+            alert('New passwords do not match');
+            return;
+        }
+
+        alert('Password changed successfully');
+    });
+</script>
+
+</body>
+</html>
